@@ -8,9 +8,27 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+    ></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
+    <script>
+      VANTA.FOG({
+        el: "#index-bg",
+        highlightColor: 0xb78761,
+        midtoneColor: 0x6a4a33,
+        lowlightColor: 0xb78761,
+        baseColor: 0xd1d5d4,
+        blurFactor: 0.5,
+        speed: 5,
+      });
+    </script>
     <title>Astro</title>
   </head>
   <body>
-    <h1 class="text-3xl font-extralight">Astro</h1>
+    <div id="index-bg" class="absolute top-0 left-0 w-full h-full"></div>
   </body>
 </html>
