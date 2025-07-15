@@ -1,5 +1,8 @@
 ---
+/** biome-ignore-all lint/correctness/noUnusedImports: Biome is not recognizing astro imports properly */
+
 import "../styles/global.css";
+import Background from "../components/background";
 ---
 
 <html lang="en">
@@ -12,47 +15,11 @@ import "../styles/global.css";
       is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
     ></script>
-    <script
-      is:inline
-      src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
-    <script>
-      // @ts-ignore
-      VANTA.FOG({
-        el: "#index-bg",
-        highlightColor: 0xf5d7a6,
-        midtoneColor: 0xf5d7a6,
-        lowlightColor: 0xf5d7a6,
-        baseColor: 0xfffdfa,
-        blurFactor: 0.9,
-        speed: 3,
-        zoom: 0.7,
-      });
-
-      // Light mode colors:
-      // highlightColor: 0xf5d7a6,
-      // midtoneColor: 0xf5d7a6,
-      // lowlightColor: 0xf5d7a6,
-      // baseColor: 0xfffdfa,
-
-      // Dark Mode colors:
-      // highlightColor: 0x9fb3bf,
-      // midtoneColor: 0x16132b,
-      // lowlightColor: 0x9fb3bf,
-      // baseColor: 0x16132b,
-
-      // Others
-      // --day: #fffdfa;
-      // --evening: #fccc83;
-      // --dusk: #db7a2a;
-      // --night: #0f131c;
-      // --dawn: #16132b;
-      // --morning: #9fb3bf;
-      // --shadow: #1a1917;
-      // --bounce-light: #f5d7a6;
-    </script>
-    <title>Astro</title>
+    <title>Marek Pankowski - Software Engineer</title>
   </head>
   <body>
-    <div id="index-bg" class="absolute top-0 left-0 w-full h-full"></div>
+    <Background client:visible>
+      <h1 class="text-amber-50 text-9xl">Hello World !</h1>
+    </Background>
   </body>
 </html>
