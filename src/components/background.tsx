@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 
-const Background = ({ children }) => {
+const Background = ({ children }: { children: React.ReactNode }) => {
   const [backgroundEffect, setBackgroundEffect] = useState(null);
   const bgRef = useRef(null);
 
@@ -21,6 +21,7 @@ const Background = ({ children }) => {
       );
 
     return () => {
+      // @ts-ignore
       if (backgroundEffect) backgroundEffect.destroy();
     };
   }, [backgroundEffect]);
