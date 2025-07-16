@@ -11,35 +11,18 @@ const Background = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     console.log("Theme mode changed:", darkMode);
-    setBackgroundEffect(
-      FOG({
-        el: bgRef.current,
-        ...backgroundColorSet[darkMode ? "dark" : "light"],
-        blurFactor: 0.8,
-        speed: 2,
-        zoom: 0.7,
-      }),
-    );
+    setBackgroundEffect(getBackgroundScene(bgRef.current, darkMode));
   }, [darkMode]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (!backgroundEffect)
-      setBackgroundEffect(
-        FOG({
-          el: bgRef.current,
-          ...backgroundColorSet[darkMode ? "dark" : "light"],
-          blurFactor: 0.8,
-          speed: 2,
-          zoom: 0.7,
-        }),
-      );
+      setBackgroundEffect(getBackgroundScene(bgRef.current, darkMode));
 
     return () => {
       // @ts-ignore
       if (backgroundEffect) backgroundEffect.destroy();
     };
-  }, []);
+  }, [backgroundEffect, darkMode]);
 
   return (
     <div ref={bgRef} className="absolute top-0 left-0 w-full h-full -z-1">
@@ -54,41 +37,39 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const backgroundColorSet = {
-  dark: {
-    highlightColor: 0x9fb3bf,
-    midtoneColor: 0x16132b,
-    lowlightColor: 0x9fb3bf,
-    baseColor: 0x16132b,
-  },
-  light: {
-    highlightColor: 0xf5d7a6,
-    midtoneColor: 0xf5d7a6,
-    lowlightColor: 0xf5d7a6,
-    baseColor: 0xfffdfa,
-  },
+const getBackgroundScene = (
+  bgRefElement: HTMLElement | null,
+  darkMode: boolean,
+) => {
+  if (!bgRefElement) return;
+  const config = getBackgroundConfiguration(darkMode);
+
+  return FOG({
+    el: bgRefElement,
+    ...config,
+  });
+};
+
+const getBackgroundConfiguration = (darkMode: boolean) => {
+  return darkMode
+    ? {
+        highlightColor: 0x9fb3bf,
+        midtoneColor: 0x16132b,
+        lowlightColor: 0x9fb3bf,
+        baseColor: 0x16132b,
+        blurFactor: 0.8,
+        speed: 2,
+        zoom: 0.7,
+      }
+    : {
+        highlightColor: 0xf5d7a6,
+        midtoneColor: 0xf5d7a6,
+        lowlightColor: 0xf5d7a6,
+        baseColor: 0xfffdfa,
+        blurFactor: 0.8,
+        speed: 2,
+        zoom: 0.7,
+      };
 };
 
 export default Background;
-
-// Light mode colors:
-// highlightColor: 0xf5d7a6,
-// midtoneColor: 0xf5d7a6,
-// lowlightColor: 0xf5d7a6,
-// baseColor: 0xfffdfa,
-
-// Dark Mode colors:
-// highlightColor: 0x9fb3bf,
-// midtoneColor: 0x16132b,
-// lowlightColor: 0x9fb3bf,
-// baseColor: 0x16132b,
-
-// Others
-// --day: #fffdfa;
-// --evening: #fccc83;
-// --dusk: #db7a2a;
-// --night: #0f131c;
-// --dawn: #16132b;
-// --morning: #9fb3bf;
-// --shadow: #1a1917;
-// --bounce-light: #f5d7a6;
