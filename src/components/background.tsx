@@ -1,52 +1,35 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
+import useTheme from "../stores/useTheme";
 import ThemeSwitcher from "./themeSwitcher";
 
 const Background = ({ children }: { children: React.ReactNode }) => {
   const bgRef = useRef(null);
-  const [backgroundEffect, setBackgroundEffect] = useState(null);
-  const [darkMode, setDarkMode] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches ?? false,
-  );
+  const isDarkTheme = useTheme((state) => state.isDarkTheme);
 
   useEffect(() => {
-    console.log("Theme mode changed:", darkMode);
-    setBackgroundEffect(getBackgroundScene(bgRef.current, darkMode));
-  }, [darkMode]);
-
-  useEffect(() => {
-    if (!backgroundEffect)
-      setBackgroundEffect(getBackgroundScene(bgRef.current, darkMode));
-
-    return () => {
-      // @ts-ignore
-      if (backgroundEffect) backgroundEffect.destroy();
-    };
-  }, [backgroundEffect, darkMode]);
+    renderBackgroundScene(bgRef.current, isDarkTheme);
+  }, [isDarkTheme]);
 
   return (
     <div ref={bgRef} className="absolute top-0 left-0 w-full h-full -z-1">
       <div className="z-1">
-        <ThemeSwitcher
-          backgroundState={darkMode}
-          backgroundStateSwitcher={setDarkMode}
-        />
+        <ThemeSwitcher />
         {children}
       </div>
     </div>
   );
 };
 
-const getBackgroundScene = (
-  bgRefElement: HTMLElement | null,
-  darkMode: boolean,
-) => {
-  if (!bgRefElement) return;
-  const config = getBackgroundConfiguration(darkMode);
+const renderBackgroundScene = (
+  element: HTMLElement | null = null,
+  isDarkTheme = false,
+): void => {
+  if (!element) return;
 
-  return FOG({
-    el: bgRefElement,
-    ...config,
+  FOG({
+    el: element,
+    ...getBackgroundConfiguration(isDarkTheme),
   });
 };
 
