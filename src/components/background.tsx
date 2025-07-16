@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 import useTheme from "../stores/useTheme";
 import ThemeSwitcher from "./themeSwitcher";
@@ -6,10 +6,36 @@ import ThemeSwitcher from "./themeSwitcher";
 const Background = ({ children }: { children: React.ReactNode }) => {
   const bgRef = useRef(null);
   const isDarkTheme = useTheme((state) => state.isDarkTheme);
+  const [currentBackgroundScene, setCurrentBackgroundScene] = useState(null);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Want to start and render first scene only once
+  useEffect(() => {
+    if (!currentBackgroundScene && bgRef.current) {
+      const effect = FOG({
+        el: bgRef.current,
+        ...getBackgroundConfiguration(isDarkTheme),
+      });
+      setCurrentBackgroundScene(effect);
+    }
+
+    return () => {
+      // Cleanup on unmount only
+      if (currentBackgroundScene) {
+        //@ts-ignore
+        currentBackgroundScene.destroy();
+        setCurrentBackgroundScene(null);
+      }
+    };
+  }, []);
 
   useEffect(() => {
-    renderBackgroundScene(bgRef.current, isDarkTheme);
-  }, [isDarkTheme]);
+    if (currentBackgroundScene) {
+      //@ts-ignore
+      currentBackgroundScene.setOptions(
+        getBackgroundConfiguration(isDarkTheme),
+      );
+    }
+  }, [isDarkTheme, currentBackgroundScene]);
 
   return (
     <div ref={bgRef} className="absolute top-0 left-0 w-full h-full -z-1">
@@ -19,18 +45,6 @@ const Background = ({ children }: { children: React.ReactNode }) => {
       </div>
     </div>
   );
-};
-
-const renderBackgroundScene = (
-  element: HTMLElement | null = null,
-  isDarkTheme = false,
-): void => {
-  if (!element) return;
-
-  FOG({
-    el: element,
-    ...getBackgroundConfiguration(isDarkTheme),
-  });
 };
 
 const getBackgroundConfiguration = (darkMode: boolean) => {
