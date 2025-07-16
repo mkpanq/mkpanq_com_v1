@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
+import ThemeSwitcher from "./themeSwitcher";
 
 const Background = ({ children }: { children: React.ReactNode }) => {
   const [backgroundEffect, setBackgroundEffect] = useState(null);
@@ -28,7 +29,10 @@ const Background = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div ref={bgRef} className="absolute top-0 left-0 w-full h-full -z-1">
-      <div className="z-1">{children}</div>
+      <div className="z-1">
+        <ThemeSwitcher />
+        {children}
+      </div>
     </div>
   );
 };
