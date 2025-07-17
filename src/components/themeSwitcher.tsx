@@ -10,7 +10,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       type="button"
-      className="absolute top-10 right-10 rounded-md px-3.5 py-2.5 text-sm font-semibold text-gray-400 shadow-xs hover:bg-gray-500 focus-visible:outline-2 focus-visible:outline-offset-2"
+      className="px-3.5 py-2.5 text-sm font-semibold text-gray-400 hover:text-gray-500 cursor-pointer"
       onClick={themeSwitcher}
     >
       {isDarkTheme ? (

@@ -37,11 +37,8 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   }, [isDarkTheme, currentBackgroundScene]);
 
   return (
-    <div ref={bgRef} className="w-full h-full -z-1">
-      <div className="z-1 w-full h-full">
-        {/* <ThemeSwitcher /> */}
-        {children}
-      </div>
+    <div ref={bgRef} className="w-full h-full">
+      <div className="w-full h-full">{children}</div>
     </div>
   );
 };
@@ -62,9 +59,9 @@ const getBackgroundConfiguration = (darkMode: boolean) => {
         midtoneColor: 0xf5d7a6,
         lowlightColor: 0xf5d7a6,
         baseColor: 0xfffdfa,
-        blurFactor: 0.8,
-        speed: 2,
-        zoom: 0.7,
+        blurFactor: 0.7,
+        speed: 5.0,
+        zoom: 1.5,
       };
 };
 

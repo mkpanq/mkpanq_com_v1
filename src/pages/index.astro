@@ -3,6 +3,7 @@
 
 import "../styles/global.css";
 import Background from "../components/background";
+import ThemeSwitcher from "../components/themeSwitcher";
 ---
 
 <html lang="en">
@@ -19,8 +20,19 @@ import Background from "../components/background";
   </head>
   <body class="w-screen h-screen">
     <Background client:only>
-      <div class="flex h-full z-0">
-        <div class="w-96 shrink-0"></div>
+      <div class="flex h-full">
+        <div class="w-96 shrink-0">
+          <div
+            class="flex flex-col w-full h-full justify-between px-5 py-5 items-end"
+          >
+            <div class="text-white pt-20 flex flex-col space-y-6 items-end">
+              <p>home</p>
+              <p>aboutme</p>
+              <p>contact</p>
+            </div>
+            <ThemeSwitcher client:only />
+          </div>
+        </div>
         <div class="bg-zinc-800 grow"></div>
       </div>
     </Background>
