@@ -1,11 +1,8 @@
 import useTheme from "../stores/useTheme";
 
 const ThemeSwitcher = () => {
-  // INFO:
-  // This is very basic theme switcher, mainly to test switching canva colors in the background
-  // In terms of normal dark mode setting and switchign we should follow: https://tailwindcss.com/docs/theme
   const themeSwitcher = useTheme((state) => state.toggleTheme);
-  const isDarkTheme = useTheme((state) => state.isDarkTheme);
+  const theme = useTheme((state) => state.theme);
 
   return (
     <button
@@ -13,7 +10,7 @@ const ThemeSwitcher = () => {
       className="px-3.5 py-2.5 text-sm font-semibold text-gray-400 hover:text-gray-500 cursor-pointer"
       onClick={themeSwitcher}
     >
-      {isDarkTheme ? (
+      {theme === "dark" ? (
         <svg
           aria-label="Switch to light mode"
           role="img"

@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
-import useTheme from "../stores/useTheme";
+import {
+  DARK_BACKGROUND_CONFIG,
+  LIGHT_BACKGROUND_CONFIG,
+} from "../config/colors";
+import useTheme, { type Theme } from "../stores/useTheme";
 
 const Background = ({ children }: { children: React.ReactNode }) => {
   const bgRef = useRef(null);
-  const isDarkTheme = useTheme((state) => state.isDarkTheme);
+  const theme = useTheme((state) => state.theme);
   const [currentBackgroundScene, setCurrentBackgroundScene] = useState(null);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Want to start and render first scene only once
@@ -12,7 +16,7 @@ const Background = ({ children }: { children: React.ReactNode }) => {
     if (!currentBackgroundScene && bgRef.current) {
       const effect = FOG({
         el: bgRef.current,
-        ...getBackgroundConfiguration(isDarkTheme),
+        ...getBackgroundConfiguration(theme),
       });
       setCurrentBackgroundScene(effect);
     }
@@ -30,11 +34,9 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (currentBackgroundScene) {
       //@ts-ignore
-      currentBackgroundScene.setOptions(
-        getBackgroundConfiguration(isDarkTheme),
-      );
+      currentBackgroundScene.setOptions(getBackgroundConfiguration(theme));
     }
-  }, [isDarkTheme, currentBackgroundScene]);
+  }, [currentBackgroundScene, theme]);
 
   return (
     <div ref={bgRef} className="w-full h-full">
@@ -43,26 +45,15 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const getBackgroundConfiguration = (darkMode: boolean) => {
-  return darkMode
-    ? {
-        highlightColor: 0x0,
-        midtoneColor: 0x0,
-        lowlightColor: 0xffffff,
-        baseColor: 0x0,
-        blurFactor: 0.7,
-        speed: 5.0,
-        zoom: 1.5,
-      }
-    : {
-        highlightColor: 0xf5d7a6,
-        midtoneColor: 0xf5d7a6,
-        lowlightColor: 0xf5d7a6,
-        baseColor: 0xfffdfa,
-        blurFactor: 0.7,
-        speed: 5.0,
-        zoom: 1.5,
-      };
+const getBackgroundConfiguration = (theme: Theme) => {
+  switch (theme) {
+    case "dark":
+      return DARK_BACKGROUND_CONFIG;
+    case "light":
+      return LIGHT_BACKGROUND_CONFIG;
+    default:
+      return DARK_BACKGROUND_CONFIG;
+  }
 };
 
 export default Background;

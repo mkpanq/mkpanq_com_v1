@@ -1,17 +1,40 @@
 import { create } from "zustand";
 
+const initialTheme = getCurrentTheme();
+document.documentElement.setAttribute("theme", initialTheme);
+const useTheme = create<ThemeState>((set) => ({
+  theme: getCurrentTheme(),
+  toggleTheme: () => {
+    document.documentElement.setAttribute(
+      "theme",
+      switchTheme(getCurrentTheme()),
+    );
+    set((state: { theme: Theme }) => ({
+      theme: switchTheme(state.theme),
+    }));
+  },
+}));
+
+export type Theme = "light" | "dark";
 type ThemeState = {
-  isDarkTheme: boolean;
+  theme: Theme;
   toggleTheme: () => void;
 };
 
-const useTheme = create<ThemeState>((set) => ({
-  isDarkTheme:
-    window.matchMedia("(prefers-color-scheme: dark)").matches ?? false,
-  toggleTheme: () =>
-    set((state: { isDarkTheme: boolean }) => ({
-      isDarkTheme: !state.isDarkTheme,
-    })),
-}));
+function getCurrentTheme(): Theme {
+  const htmlTheme = document.documentElement.getAttribute("theme");
+  const theme: Theme =
+    htmlTheme === "dark" || htmlTheme === "light"
+      ? htmlTheme
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+
+  return theme;
+}
+
+function switchTheme(currentTheme: Theme | null): Theme {
+  return currentTheme === "dark" ? "light" : "dark";
+}
 
 export default useTheme;
