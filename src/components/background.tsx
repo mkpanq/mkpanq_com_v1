@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
 import useTheme from "../stores/useTheme";
-import ThemeSwitcher from "./themeSwitcher";
 
 const Background = ({ children }: { children: React.ReactNode }) => {
   const bgRef = useRef(null);
@@ -38,9 +37,9 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   }, [isDarkTheme, currentBackgroundScene]);
 
   return (
-    <div ref={bgRef} className="absolute top-0 left-0 w-full h-full -z-1">
-      <div className="z-1">
-        <ThemeSwitcher />
+    <div ref={bgRef} className="w-full h-full -z-1">
+      <div className="z-1 w-full h-full">
+        {/* <ThemeSwitcher /> */}
         {children}
       </div>
     </div>
@@ -50,13 +49,13 @@ const Background = ({ children }: { children: React.ReactNode }) => {
 const getBackgroundConfiguration = (darkMode: boolean) => {
   return darkMode
     ? {
-        highlightColor: 0x9fb3bf,
-        midtoneColor: 0x16132b,
-        lowlightColor: 0x9fb3bf,
-        baseColor: 0x16132b,
-        blurFactor: 0.8,
-        speed: 2,
-        zoom: 0.7,
+        highlightColor: 0x0,
+        midtoneColor: 0x0,
+        lowlightColor: 0xffffff,
+        baseColor: 0x0,
+        blurFactor: 0.7,
+        speed: 5.0,
+        zoom: 1.5,
       }
     : {
         highlightColor: 0xf5d7a6,
