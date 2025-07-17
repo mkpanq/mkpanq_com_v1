@@ -22,6 +22,11 @@
           "level": "info",
           "fix": "none",
           "options": {}
+        },
+        "noUnusedImports": {
+          "level": "info",
+          "fix": "none",
+          "options": {}
         }
       }
     }

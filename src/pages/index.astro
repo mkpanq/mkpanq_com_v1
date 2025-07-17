@@ -1,40 +1,7 @@
 ---
-/** biome-ignore-all lint/correctness/noUnusedImports: Biome is not recognizing astro imports properly */
-
-import "../styles/global.css";
-import Background from "../components/background";
-import ThemeSwitcher from "../components/themeSwitcher";
+import Main from "../layouts/main.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <script
-      is:inline
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-    ></script>
-    <title>Marek Pankowski - Software Engineer</title>
-  </head>
-  <body class="w-screen h-screen">
-    <Background client:only>
-      <div class="flex h-full">
-        <div class="w-96 shrink-0">
-          <div
-            class="flex flex-col w-full h-full justify-between px-5 py-5 items-end"
-          >
-            <div class="text-white pt-20 flex flex-col space-y-6 items-end">
-              <p>home</p>
-              <p>aboutme</p>
-              <p>contact</p>
-            </div>
-            <ThemeSwitcher client:only />
-          </div>
-        </div>
-        <div class="bg-zinc-800 grow"></div>
-      </div>
-    </Background>
-  </body>
-</html>
+<Main>
+  <p class="text-white dark:text-red-700">Hello World !</p>
+</Main>
