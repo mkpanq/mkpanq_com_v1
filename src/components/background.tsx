@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import FOG from "vanta/dist/vanta.fog.min";
+import TOPOLOGY from "vanta/dist/vanta.topology.min";
 import {
   DARK_BACKGROUND_CONFIG,
   LIGHT_BACKGROUND_CONFIG,
@@ -14,7 +14,7 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: Want to start and render first scene only once
   useEffect(() => {
     if (!currentBackgroundScene && bgRef.current) {
-      const effect = FOG({
+      const effect = TOPOLOGY({
         el: bgRef.current,
         ...getBackgroundConfiguration(theme),
       });

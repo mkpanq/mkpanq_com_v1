@@ -1,1 +1,1 @@
-declare module "vanta/dist/vanta.fog.min";
+declare module "vanta/dist/vanta.topology.min";

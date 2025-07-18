@@ -1,19 +1,19 @@
 export const DARK_BACKGROUND_CONFIG = {
-  highlightColor: 0x0,
-  midtoneColor: 0x0,
-  lowlightColor: 0xffffff,
-  baseColor: 0x0,
-  blurFactor: 0.7,
-  speed: 5.0,
-  zoom: 1.5,
+  mouseControls: false,
+  touchControls: false,
+  gyroControls: false,
+  scale: 1,
+  scaleMobile: 1.0,
+  color: 0x484848,
+  backgroundColor: 0x0,
 };
 
 export const LIGHT_BACKGROUND_CONFIG = {
-  highlightColor: 0xf5d7a6,
-  midtoneColor: 0xf5d7a6,
-  lowlightColor: 0xf5d7a6,
-  baseColor: 0xfffdfa,
-  blurFactor: 0.7,
-  speed: 5.0,
-  zoom: 1.5,
+  mouseControls: false,
+  touchControls: false,
+  gyroControls: false,
+  scale: 1,
+  scaleMobile: 1.0,
+  color: 0xd7d7d7,
+  backgroundColor: 0xffffff,
 };
