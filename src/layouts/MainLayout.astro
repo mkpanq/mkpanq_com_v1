@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Background from "../components/background";
+import Header from "../components/header";
 ---
 
 <html lang="en">
@@ -11,11 +12,23 @@ import Background from "../components/background";
     <meta name="generator" content={Astro.generator} />
     <script is:inline src="https://cdn.jsdelivr.net/npm/p5@1.11.9/lib/p5.min.js"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Marek Pankowski - Software Engineer</title>
   </head>
   <body class="w-screen h-screen">
     <Background client:only>
-      <slot />
+      <!-- TODO: Add size endpoints for mobile  -->
+      <div class="flex items-center justify-center w-full h-full font-inter">
+        <div class="w-3/4 h-3/4">
+          <Header />
+          <slot />
+        </div>
+      </div>
     </Background>
   </body>
 </html>
