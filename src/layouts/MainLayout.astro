@@ -1,11 +1,14 @@
 ---
 import "../styles/global.css";
-import Background from "../components/background";
-import Header from "../components/header";
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/header.astro";
+
+const pageTitle = "Marek Pankowski - Software Engineer";
 ---
 
 <html lang="en">
   <head>
+    <ClientRouter />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
@@ -18,15 +21,15 @@ import Header from "../components/header";
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Marek Pankowski - Software Engineer</title>
+    <title>{pageTitle}</title>
   </head>
   <body class="w-screen h-screen">
-    <Background client:only />
+    <!-- <Background client:only transition:persist /> -->
     <!-- TODO: Add size endpoints for mobile  -->
     <div class="flex items-center justify-center w-full h-full font-inter">
-      <div class="w-3/4 h-3/4 border p-3 space-y-5 flex flex-col">
+      <div class="w-3/4 h-3/4 p-3 space-y-5 flex flex-col">
         <Header />
-        <div class="border grow">
+        <div class="grow">
           <slot />
         </div>
       </div>
