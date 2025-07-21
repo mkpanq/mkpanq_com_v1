@@ -21,14 +21,15 @@ import Header from "../components/header";
     <title>Marek Pankowski - Software Engineer</title>
   </head>
   <body class="w-screen h-screen">
-    <Background client:only>
-      <!-- TODO: Add size endpoints for mobile  -->
-      <div class="flex items-center justify-center w-full h-full font-inter">
-        <div class="w-3/4 h-3/4">
-          <Header />
+    <Background client:only />
+    <!-- TODO: Add size endpoints for mobile  -->
+    <div class="flex items-center justify-center w-full h-full font-inter">
+      <div class="w-3/4 h-3/4 border p-3 space-y-5 flex flex-col">
+        <Header />
+        <div class="border grow">
           <slot />
         </div>
       </div>
-    </Background>
+    </div>
   </body>
 </html>

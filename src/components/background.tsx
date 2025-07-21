@@ -6,7 +6,7 @@ import {
 } from "../config/colors";
 import useTheme, { type Theme } from "../stores/useTheme";
 
-const Background = ({ children }: { children: React.ReactNode }) => {
+const Background = () => {
   const bgRef = useRef(null);
   const theme = useTheme((state) => state.theme);
   const [currentBackgroundScene, setCurrentBackgroundScene] = useState(null);
@@ -39,9 +39,7 @@ const Background = ({ children }: { children: React.ReactNode }) => {
   }, [currentBackgroundScene, theme]);
 
   return (
-    <div ref={bgRef} className="w-full h-full">
-      <div className="w-full h-full">{children}</div>
-    </div>
+    <div ref={bgRef} className="absolute top-0 left-0 w-full h-full -z-10" />
   );
 };
 
