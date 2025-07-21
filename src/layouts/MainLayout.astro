@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
+import { ThemeScript } from "astro-theme-toggle";
 
 const pageTitle = "Marek Pankowski - Software Engineer";
 ---
@@ -13,8 +14,6 @@ const pageTitle = "Marek Pankowski - Software Engineer";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <script is:inline src="https://cdn.jsdelivr.net/npm/p5@1.11.9/lib/p5.min.js"
-    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,8 +23,9 @@ const pageTitle = "Marek Pankowski - Software Engineer";
     <title>{pageTitle}</title>
   </head>
   <body class="w-screen h-screen">
+    <ThemeScript />
     <div
-      class="absolute inset-0 h-full w-full bg-white dark:bg-red-800 bg-[radial-gradient(#CECFD3_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)] -z-10"
+      class="absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#CECFD3_1px,transparent_1px)] [background-size:20px_20px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)] -z-10"
     >
     </div>
     <!-- TODO: Add size endpoints for mobile  -->
