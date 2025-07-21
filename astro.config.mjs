@@ -1,6 +1,6 @@
 // @ts-check
 
-import react from "@astrojs/react";
+import preact from "@astrojs/preact";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
@@ -13,5 +13,5 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: "load",
   },
-  integrations: [react()],
+  integrations: [preact()],
 });
