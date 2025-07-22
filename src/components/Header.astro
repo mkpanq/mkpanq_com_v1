@@ -3,12 +3,19 @@ import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <div
-  class="flex justify-between items-center font-medium text-black/50 text-3xl"
+  class="flex justify-between items-center font-medium text-default-black dark:text-default-white text-3xl"
 >
-  <a href="/" class="font-semibold hover:text-black"> mkpanq.com </a>
-  <div class="flex space-x-8 items-center">
-    <a href="/about" class="hover:text-black"> about </a>
-    <a href="/contact" class="hover:text-black"> contact </a>
+  <a
+    href="/"
+    class="font-semibold hover:text-shadow-lg/10 dark:text-shadow-default-white"
+  >
+    mkpanq.com
+  </a>
+  <div
+    class="flex space-x-8 items-center [&>*]:hover:text-shadow-lg/10 dark:[&>*]:text-shadow-default-white"
+  >
+    <a href="/about"> about </a>
+    <a href="/contact"> contact </a>
     <ThemeToggle />
   </div>
 </div>
