@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 <div
   id="menu-page"
-  class="absolute h-full top-0 left-0 bg-default-white dark:bg-default-black w-full z-10"
+  class="hidden absolute h-full top-0 left-0 bg-white dark:bg-default-black w-full z-10"
 >
   <button id="close-menu" class="absolute top-10 right-10">
     <svg
@@ -19,6 +19,12 @@ import ThemeToggle from "./ThemeToggle.astro";
         clip-rule="evenodd"></path>
     </svg>
   </button>
+  <div
+    class="flex flex-col h-lvh space-y-10 items-center pt-30 font-medium text-default-black dark:text-default-white text-8xl"
+  >
+    <a id="menu-link" href="/about" data-astro-reload> about </a>
+    <a id="menu-link" href="/contact" data-astro-reload> contact </a>
+  </div>
 </div>
 
 <div
@@ -58,16 +64,24 @@ import ThemeToggle from "./ThemeToggle.astro";
   </div>
 </div>
 
-<script>
+<script is:inline>
   const openMenuButton = document.getElementById("open-menu");
   const menuPage = document.getElementById("menu-page");
   const closeMenuButton = document.getElementById("close-menu");
+  const anyMenuLink = document.querySelectorAll("#menu-link");
 
-  openMenuButton.addEventListener("click", () => {
+  openMenuButton.addEventListener("click", (e) => {
+    e.preventDefault();
     menuPage.classList.toggle("hidden");
   });
 
   closeMenuButton.addEventListener("click", () => {
     menuPage.classList.toggle("hidden");
+  });
+
+  anyMenuLink.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      menuPage.classList.toggle("hidden");
+    });
   });
 </script>
