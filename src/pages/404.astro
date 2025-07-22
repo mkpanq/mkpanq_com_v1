@@ -1,5 +1,11 @@
 ---
-
+import ErrorLayout from "../layouts/ErrorLayout.astro";
 ---
 
-<p>DAMN! 404</p>
+<ErrorLayout>
+  <div class="space-y-24 text-center">
+    <h1 class="text-6xl font-extrabold">Something is not right... 🤕</h1>
+    <h2 class="text-6xl font-bold text-default-accent">404 - Page not found</h2>
+    <a href="/" class="text-3xl font-normal">Back to home</a>
+  </div>
+</ErrorLayout>
