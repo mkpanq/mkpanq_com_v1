@@ -3,85 +3,29 @@ import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <div
-  id="menu-page"
-  class="hidden absolute h-full top-0 left-0 bg-white dark:bg-default-black w-full z-10"
+  class="flex flex-col gap-5 md:flex-row w-full md:justify-between font-medium text-default-black dark:text-default-white text-3xl"
 >
-  <button id="close-menu" class="absolute top-10 right-10">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      class="size-8"
+  <span class="flex justify-between">
+    <a
+      href="/"
+      class="font-semibold hover:text-shadow-lg/20 dark:text-shadow-default-accent"
     >
-      <path
-        fill-rule="evenodd"
-        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-        clip-rule="evenodd"></path>
-    </svg>
-  </button>
-  <div
-    class="flex flex-col h-lvh space-y-10 items-center pt-30 font-medium text-default-black dark:text-default-white text-8xl"
-  >
-    <a id="menu-link" href="/about" data-astro-reload> about </a>
-    <a id="menu-link" href="/contact" data-astro-reload> contact </a>
-  </div>
-</div>
+      mkpanq.com
+    </a>
+    <span class="md:hidden">
+      <ThemeToggle />
+    </span>
+  </span>
 
-<div
-  class="flex justify-between items-center font-medium text-default-black dark:text-default-white text-3xl"
->
-  <a
-    href="/"
-    class="font-semibold hover:text-shadow-lg/10 dark:text-shadow-default-white"
-  >
-    mkpanq.com
-  </a>
-
-  <button id="open-menu" class="md:hidden">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="size-8"
+  <div class="flex justify-between items-center md:gap-8">
+    <span
+      class="flex space-x-8 [&>*]:hover:text-shadow-lg/20 dark:[&>*]:text-shadow-default-accent"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-    </svg>
-  </button>
-
-  <div
-    class="flex md:space-x-reverse md:space-x-8 items-center [&>*]:hover:text-shadow-lg/10 dark:[&>*]:text-shadow-default-white max-md:-order-1"
-  >
-    <div class="max-md:hidden flex space-x-8 items-center justify-around">
       <a href="/about"> about </a>
       <a href="/contact"> contact </a>
-    </div>
-    <ThemeToggle />
+    </span>
+    <span class="max-md:hidden self-end">
+      <ThemeToggle />
+    </span>
   </div>
 </div>
-
-<script is:inline>
-  const openMenuButton = document.getElementById("open-menu");
-  const menuPage = document.getElementById("menu-page");
-  const closeMenuButton = document.getElementById("close-menu");
-  const anyMenuLink = document.querySelectorAll("#menu-link");
-
-  openMenuButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    menuPage.classList.toggle("hidden");
-  });
-
-  closeMenuButton.addEventListener("click", () => {
-    menuPage.classList.toggle("hidden");
-  });
-
-  anyMenuLink.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      menuPage.classList.toggle("hidden");
-    });
-  });
-</script>
