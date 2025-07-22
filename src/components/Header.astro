@@ -3,6 +3,25 @@ import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <div
+  id="menu-page"
+  class="absolute h-full top-0 left-0 bg-default-white dark:bg-default-black w-full z-10"
+>
+  <button id="close-menu" class="absolute top-10 right-10">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="size-8"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
+</div>
+
+<div
   class="flex justify-between items-center font-medium text-default-black dark:text-default-white text-3xl"
 >
   <a
@@ -11,11 +30,44 @@ import ThemeToggle from "./ThemeToggle.astro";
   >
     mkpanq.com
   </a>
+
+  <button id="open-menu" class="md:hidden">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-8"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+    </svg>
+  </button>
+
   <div
-    class="flex space-x-8 items-center [&>*]:hover:text-shadow-lg/10 dark:[&>*]:text-shadow-default-white"
+    class="flex md:space-x-reverse md:space-x-8 items-center [&>*]:hover:text-shadow-lg/10 dark:[&>*]:text-shadow-default-white max-md:-order-1"
   >
-    <a href="/about"> about </a>
-    <a href="/contact"> contact </a>
+    <div class="max-md:hidden flex space-x-8 items-center justify-around">
+      <a href="/about"> about </a>
+      <a href="/contact"> contact </a>
+    </div>
     <ThemeToggle />
   </div>
 </div>
+
+<script>
+  const openMenuButton = document.getElementById("open-menu");
+  const menuPage = document.getElementById("menu-page");
+  const closeMenuButton = document.getElementById("close-menu");
+
+  openMenuButton.addEventListener("click", () => {
+    menuPage.classList.toggle("hidden");
+  });
+
+  closeMenuButton.addEventListener("click", () => {
+    menuPage.classList.toggle("hidden");
+  });
+</script>
