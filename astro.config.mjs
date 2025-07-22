@@ -9,6 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  // I guess we could skip it due to active ClientRouter but just leave it for now
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "load",

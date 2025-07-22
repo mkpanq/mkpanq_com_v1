@@ -1,11 +1,10 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-import Header from "../components/Header.astro";
 import { ThemeScript } from "astro-theme-toggle";
 import Background from "../components/Background.astro";
 
-const pageTitle = "Marek Pankowski - Software Engineer";
+const { pageTitle } = Astro.props;
 ---
 
 <html lang="en">
@@ -30,10 +29,7 @@ const pageTitle = "Marek Pankowski - Software Engineer";
       <div
         class="w-full h-full mt-10 mx-4 lg:w-3/4 lg:h-3/4 p-3 space-y-5 flex flex-col"
       >
-        <Header />
-        <div class="grow text-default-black dark:text-default-white">
-          <slot />
-        </div>
+        <slot />
       </div>
     </div>
   </body>

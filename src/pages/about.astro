@@ -1,12 +1,13 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-const pageTitle = "About me";
+import PageLayout from "../layouts/PageLayout.astro";
+
+const pageTitle = "Marek Pankowski - About me";
 ---
 
-<MainLayout>
+<PageLayout pageTitle={pageTitle}>
   <div
     class="w-full h-full justify-center text-center py-45 font-bold text-7xl"
   >
     Here's {pageTitle}
   </div>
-</MainLayout>
+</PageLayout>
