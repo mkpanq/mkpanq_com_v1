@@ -1,4 +1,5 @@
 ---
+import Availability from "../components/Availability.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 const pageTitle = "Marek Pankowski - Contact";
@@ -6,8 +7,41 @@ const pageTitle = "Marek Pankowski - Contact";
 
 <PageLayout pageTitle={pageTitle}>
   <div
-    class="w-full h-full justify-center text-center py-45 font-bold text-7xl"
+    class="flex flex-col gap-10 md:gap-15 w-full h-full py-30 lg:px-10 xl:px-20"
   >
-    Here's {pageTitle}!
+    <div class="flex justify-between items-center">
+      <p class="text-4xl md:text-5xl lg:text-6xl font-bold">
+        Let's connect ! 🤝🏻
+      </p>
+      <Availability />
+    </div>
+    <p
+      class="text-justify text-3xl md:text-4xl lg:text-5xl font-normal leading-19"
+    >
+      Want to share a project idea, ask something, or just say hi?
+    </p>
+    <a
+      class="text-3xl md:text-4xl lg:text-5xl font-semibold text-default-accent"
+      target="_blank"
+      href="mailto:%6d%61%72%65%6b%2e%6b%2e%70%61%6e%6b%6f%77%73%6b%69%40%67%6d%61%69%6c%2e%63%6f%6d"
+      >Email me ! 📫</a
+    >
+    <p class="text-xl md:text-2xl lg:text-3xl font-light">
+      You can also find me on:
+    </p>
+    <div class="inline-flex space-x-10 -mt-5">
+      <a
+        href="https://www.linkedin.com/in/mkpanq"
+        target="_blank"
+        class="fa-3x fa-brands fa-linkedin text-[#0a66c2]"></a>
+      <a
+        href="https://www.github.com/mkpanq"
+        target="_blank"
+        class="fa-3x fa-brands fa-github"></a>
+      <a
+        href="https://bsky.app/profile/mkpanq.com"
+        target="_blank"
+        class="fa-3x fa-brands fa-bluesky text-[#1684FF]"></a>
+    </div>
   </div>
 </PageLayout>
