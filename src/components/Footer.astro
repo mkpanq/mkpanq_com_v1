@@ -1,40 +1,18 @@
+---
+import { returnNewDateTime } from "../lib/currentDatetime";
+---
+
 <div
   class="font-mono text-sm flex flex-col gap-2 justify-center text-center items-center pb-10"
 >
   <p>Warsaw, Poland</p>
-  <p id="datetime">
-    {
-      new Date().toLocaleString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZoneName: "short",
-        hourCycle: "h24",
-      })
-    }
+  <p id="footerDateTime">
+    {returnNewDateTime()}
   </p>
   <p>© 2025 Marek Pankowski. All rights reserved.</p>
 </div>
 
 <script>
-  function updateDateTime() {
-    document.getElementById("datetime")!.textContent =
-      new Date().toLocaleString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZoneName: "short",
-        hour12: false,
-        timeZone: "Europe/Warsaw",
-      });
-  }
-  setInterval(updateDateTime, 1000);
+  import { updateDateTime } from "../lib/currentDatetime";
+  setInterval(() => updateDateTime("footerDateTime"), 1000);
 </script>
