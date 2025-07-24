@@ -1,15 +1,19 @@
 ---
+import Availability from "../components/Availability.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 const pageTitle = "Marek Pankowski - Software Engineer";
 ---
 
 <PageLayout pageTitle={pageTitle}>
-  <div class="w-full h-full py-45 lg:px-10 xl:px-20">
-    <p class="text-4xl md:text-5xl lg:text-6xl font-normal pb-10 md:pb-20">
+  <div
+    class="flex flex-col gap-10 md:gap-15 w-full h-full py-30 lg:px-10 xl:px-20"
+  >
+    <Availability />
+    <p class="text-4xl md:text-5xl lg:text-6xl font-normal">
       Hi ! 👋🏻 I'm Marek Pankowski
     </p>
-    <p class="text-5xl md:text-6xl lg:text-7xl font-bold pb-10">
+    <p class="text-5xl md:text-6xl lg:text-7xl font-bold">
       I’m a fullstack software engineer
     </p>
     <p
