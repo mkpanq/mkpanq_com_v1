@@ -1,10 +1,30 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import { SEO } from "astro-seo";
 
 const pageTitle = "Marek Pankowski - About me";
 const ogPageTitle = "About me";
 ---
 
+<SEO
+  extend={{
+    meta: [
+      {
+        name: "title",
+        content: "About me",
+      },
+      {
+        name: "og:title",
+        content: "Marek Pankowski - About me",
+      },
+      {
+        name: "og:image",
+        content:
+          "https://dynamic-og-image-generator.vercel.app/api/generate?title=About&author=Marek+Pankowski&websiteUrl=https%3A%2F%2Fmkpanq.com&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F17934750%3Fv%3D4&theme=default",
+      },
+    ],
+  }}
+/>
 <PageLayout pageTitle={pageTitle} ogPageTitle={ogPageTitle}>
   <img
     src="/mp.jpeg"

@@ -1,11 +1,31 @@
 ---
 import Availability from "../components/Availability.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import { SEO } from "astro-seo";
 
 const pageTitle = "Marek Pankowski - Contact";
 const ogPageTitle = "Contact";
 ---
 
+<SEO
+  extend={{
+    meta: [
+      {
+        name: "title",
+        content: "Contact",
+      },
+      {
+        name: "og:title",
+        content: "Marek Pankowski - Contact",
+      },
+      {
+        name: "og:image",
+        content:
+          "https://dynamic-og-image-generator.vercel.app/api/generate?title=Contact&author=Marek+Pankowski&websiteUrl=https%3A%2F%2Fmkpanq.com&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F17934750%3Fv%3D4&theme=default",
+      },
+    ],
+  }}
+/>
 <PageLayout pageTitle={pageTitle} ogPageTitle={ogPageTitle}>
   <div class="space-y-5 sm:space-y-10 md:space-y-15">
     <div
