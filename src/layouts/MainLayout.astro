@@ -5,7 +5,7 @@ import { ThemeScript } from "astro-theme-toggle";
 import Background from "../components/Background.astro";
 import { SEO } from "astro-seo";
 
-const { pageTitle, ogPageTitle } = Astro.props;
+const { pageTitle } = Astro.props;
 ---
 
 <html lang="en">
@@ -14,6 +14,16 @@ const { pageTitle, ogPageTitle } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="theme-color"
+      content="#f3f4f6"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1b1b1b"
+      media="(prefers-color-scheme: dark)"
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +36,6 @@ const { pageTitle, ogPageTitle } = Astro.props;
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <SEO
-      title={ogPageTitle}
       titleTemplate="Marek Pankowski - %s"
       titleDefault="Marek Pankowski - Software Engineer"
       description="Welcome to Marek Pankowski's personal site, where I showcase my expertise in software engineering and share insights on technology."
@@ -34,9 +43,10 @@ const { pageTitle, ogPageTitle } = Astro.props;
       charset="UTF-8"
       openGraph={{
         basic: {
-          title: ogPageTitle,
+          title: "Welcome to Marek Pankowski's homepage",
           type: "website",
-          image: `https://dynamic-og-image-generator.vercel.app/api/generate?title=${ogPageTitle}&author=Marek+Pankowski&websiteUrl=https%3A%2F%2Fmkpanq.com&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F17934750%3Fv%3D4&theme=default`,
+          image:
+            "https://dynamic-og-image-generator.vercel.app/api/generate?title=Home&author=Marek+Pankowski&websiteUrl=https%3A%2F%2Fmkpanq.com&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F17934750%3Fv%3D4&theme=default",
         },
       }}
       twitter={{

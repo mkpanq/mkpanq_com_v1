@@ -3,6 +3,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 
+import webmanifest from "astro-webmanifest";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://mkpanq.com",
@@ -14,5 +16,17 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: "load",
   },
-  integrations: [sitemap(), robotsTxt()],
+
+  integrations: [
+    sitemap(),
+    robotsTxt(),
+    webmanifest({
+      name: "Marek Pankowski - Software Engineer",
+      icon: "public/favicon.png",
+      short_name: "mkpanq.com",
+      description: "Marek Pankowski - Personal website",
+      start_url: "/",
+      display: "standalone",
+    }),
+  ],
 });
