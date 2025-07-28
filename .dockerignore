@@ -1,0 +1,9 @@
+Dockerfile
+Dockerfile.*
+.dockerignore
+node_modules
+README.md
+.git
+.astro
+.DS_Store
+dist
