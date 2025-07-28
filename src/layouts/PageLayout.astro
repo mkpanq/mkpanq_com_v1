@@ -4,10 +4,10 @@ import Header from "../components/Header.astro";
 import MainLayout from "./MainLayout.astro";
 import Footer from "../components/Footer.astro";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, ogPageTitle } = Astro.props;
 ---
 
-<MainLayout pageTitle={pageTitle}>
+<MainLayout pageTitle={pageTitle} ogPageTitle={ogPageTitle}>
   <Header />
   <div
     class="grow text-default-black dark:text-default-white py-6 sm:py-10 md:py-30 lg:px-10 xl:px-20"

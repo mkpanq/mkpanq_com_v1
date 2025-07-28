@@ -3,8 +3,9 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { ThemeScript } from "astro-theme-toggle";
 import Background from "../components/Background.astro";
+import { SEO } from "astro-seo";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, ogPageTitle } = Astro.props;
 ---
 
 <html lang="en">
@@ -23,6 +24,26 @@ const { pageTitle } = Astro.props;
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <SEO
+      title={ogPageTitle}
+      titleTemplate="Marek Pankowski - %s"
+      titleDefault="Marek Pankowski - Software Engineer"
+      description="Welcome to Marek Pankowski's personal site, where I showcase my expertise in software engineering and share insights on technology."
+      canonical="https://mkpanq.com"
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: ogPageTitle,
+          type: "website",
+          image: `https://dynamic-og-image-generator.vercel.app/api/generate?title=${ogPageTitle}&author=Marek+Pankowski&websiteUrl=https%3A%2F%2Fmkpanq.com&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F17934750%3Fv%3D4&theme=default`,
+        },
+      }}
+      twitter={{
+        card: "summary",
+        creator: "@mkpanq",
+        site: "@mkpanq",
+      }}
     />
     <title>{pageTitle}</title>
   </head>

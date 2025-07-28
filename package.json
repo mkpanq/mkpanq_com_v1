@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.3",
     "astro-robots-txt": "^1.0.0",
+    "astro-seo": "^0.8.4",
     "astro-theme-toggle": "^0.6.1",
     "tailwindcss": "^4.1.11"
   },
