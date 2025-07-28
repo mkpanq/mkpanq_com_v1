@@ -1,11 +1,11 @@
-// @ts-check
-
-import preact from "@astrojs/preact";
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://mkpanq.com",
   vite: {
     plugins: [tailwindcss()],
   },
@@ -14,5 +14,5 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: "load",
   },
-  integrations: [preact()],
+  integrations: [sitemap(), robotsTxt()],
 });
