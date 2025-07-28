@@ -13,12 +13,12 @@
     "astro": "^5.12.3",
     "astro-seo": "^0.8.4",
     "astro-theme-toggle": "^0.6.1",
-    "tailwindcss": "^4.1.11"
-  },
-  "devDependencies": {
+    "tailwindcss": "^4.1.11",
     "@astrojs/sitemap": "^3.4.1",
     "astro-robots-txt": "^1.0.0",
-    "astro-webmanifest": "^1.0.0",
+    "astro-webmanifest": "^1.0.0"
+  },
+  "devDependencies": {
     "@biomejs/biome": "2.1.1",
     "lefthook": "^1.12.2",
     "prettier": "3.6.2",

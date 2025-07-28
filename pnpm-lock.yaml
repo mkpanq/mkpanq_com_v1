@@ -8,34 +8,34 @@ importers:
 
   .:
     dependencies:
+      '@astrojs/sitemap':
+        specifier: ^3.4.1
+        version: 3.4.1
       '@tailwindcss/vite':
         specifier: ^4.1.11
         version: 4.1.11(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
       astro:
         specifier: ^5.12.3
         version: 5.12.3(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(typescript@5.8.3)(yaml@2.8.0)
+      astro-robots-txt:
+        specifier: ^1.0.0
+        version: 1.0.0
       astro-seo:
         specifier: ^0.8.4
         version: 0.8.4(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.8.3)
       astro-theme-toggle:
         specifier: ^0.6.1
         version: 0.6.1
+      astro-webmanifest:
+        specifier: ^1.0.0
+        version: 1.0.0
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
     devDependencies:
-      '@astrojs/sitemap':
-        specifier: ^3.4.1
-        version: 3.4.1
       '@biomejs/biome':
         specifier: 2.1.1
         version: 2.1.1
-      astro-robots-txt:
-        specifier: ^1.0.0
-        version: 1.0.0
-      astro-webmanifest:
-        specifier: ^1.0.0
-        version: 1.0.0
       lefthook:
         specifier: ^1.12.2
         version: 1.12.2
