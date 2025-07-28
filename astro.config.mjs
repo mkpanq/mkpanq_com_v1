@@ -8,15 +8,14 @@ import webmanifest from "astro-webmanifest";
 // https://astro.build/config
 export default defineConfig({
   site: "https://mkpanq.com",
-  vite: {
-    plugins: [tailwindcss()],
-  },
   // I guess we could skip it due to active ClientRouter but just leave it for now
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "load",
   },
-
+  vite: {
+    plugins: [tailwindcss()],
+  },
   integrations: [
     sitemap(),
     robotsTxt(),
