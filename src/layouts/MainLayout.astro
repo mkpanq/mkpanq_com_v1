@@ -11,6 +11,18 @@ const { pageTitle } = Astro.props;
 <html lang="en">
   <head>
     <ClientRouter />
+    <SEO
+      titleTemplate="Marek Pankowski - %s"
+      titleDefault="Marek Pankowski - Software Engineer"
+      description="Welcome to my personal site, where I showcase my expertise in software engineering and share insights on technology."
+      canonical="https://mkpanq.com"
+      charset="UTF-8"
+      twitter={{
+        card: "summary",
+        creator: "@mkpanq",
+        site: "@mkpanq",
+      }}
+    />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -35,26 +47,7 @@ const { pageTitle } = Astro.props;
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-    <SEO
-      titleTemplate="Marek Pankowski - %s"
-      titleDefault="Marek Pankowski - Software Engineer"
-      description="Welcome to my personal site, where I showcase my expertise in software engineering and share insights on technology."
-      canonical="https://mkpanq.com"
-      charset="UTF-8"
-      openGraph={{
-        basic: {
-          title: "Marek Pankowski - Home",
-          type: "website",
-          image:
-            "https://dynamic-og-image-generator.vercel.app/api/generate?title=Home&author=Marek+Pankowski&websiteUrl=https%3A%2F%2Fmkpanq.com&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F17934750%3Fv%3D4&theme=default",
-        },
-      }}
-      twitter={{
-        card: "summary",
-        creator: "@mkpanq",
-        site: "@mkpanq",
-      }}
-    />
+
     <script
       defer
       is:inline
